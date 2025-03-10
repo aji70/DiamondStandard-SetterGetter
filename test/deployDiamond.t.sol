@@ -76,16 +76,15 @@ contract DiamondDeployer is Test, IDiamondCut {
 
     function testLayoutfacet2() public {
         SetterGetterFacet l = SetterGetterFacet(address(diamond));
-        l.getLayout();
 
-        l.ChangeNameAndNo(67, "dis guy");
+        l.ChangeNameAndNo(67, "John");
 
         // check outputs
         SetEmail li = SetEmail(address(diamond));
 
         li.setEmail("aji@gmail.com");
         LibAppStorage.Layout memory laa = li.getLayout1();
-        assertEq(laa.name, "dis guy");
+        assertEq(laa.name, "John");
         assertEq(laa.currentNo, 67);
         assertEq(laa.email, "aji@gmail.com");
     }
